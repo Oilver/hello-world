@@ -8,8 +8,17 @@ pipeline {
             }
             steps {
                 echo 'test build'
-                sh 'mvn -B -DskipTests clean package'
+                bat 'mvn -B -DskipTests clean package'
             }
+			steps {
+                echo 'test junit'
+                bat 'mvn test'
+            }
+			post {
+				always {
+					junit 'target/surefire-reports/*.xml'
+				}
+			}
         }
     }
 }
