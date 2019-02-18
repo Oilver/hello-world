@@ -10,15 +10,17 @@ pipeline {
                 echo 'test build'
                 bat 'mvn -B -DskipTests clean package'
             }
-			steps {
-                echo 'test junit'
-                bat 'mvn test'
+        }
+        stage('test') {
+            steps {
+                 echo 'test junit'
+                 bat 'mvn test'
             }
-			post {
-				always {
-					junit 'target/surefire-reports/*.xml'
-				}
-			}
+            post {
+            	 always {
+            	    junit 'target/surefire-reports/*.xml'
+            	 }
+            }
         }
     }
 }
