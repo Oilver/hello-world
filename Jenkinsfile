@@ -12,6 +12,10 @@ pipeline {
             }
         }
         stage('test') {
+            tools {
+                maven 'Maven 3.0.4'
+                jdk 'SunJDK Latest_win'
+            }
             steps {
                  echo 'test junit'
                  bat 'mvn test'
@@ -20,6 +24,12 @@ pipeline {
             	 always {
             	    junit 'target/surefire-reports/*.xml'
             	 }
+            }
+        }
+        stage('deploy') {
+            steps {
+                echo 'test deploy'
+
             }
         }
     }
