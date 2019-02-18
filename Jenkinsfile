@@ -29,7 +29,8 @@ pipeline {
         stage('deploy') {
             steps {
                 echo 'test deploy'
-
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'dcdevap814', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/install.sh')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'dcdevap814', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/com.deng-1.0-SNAPSHOT.jar')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
             }
         }
     }
